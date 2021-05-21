@@ -19,3 +19,16 @@ spec:
         image: darkmatterdocker:latest
         ports:
         - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-express-service
+spec:
+  selector:
+    app: mongo-express
+  type:  ClusterIp
+  ports:
+    - protocol: TCP
+      port: 30002
+      targetPort: 8081
